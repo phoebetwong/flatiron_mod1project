@@ -73,12 +73,19 @@ We identified some errors in the Box Office Mojo dataset (some foreign box offic
 
 Phoebe's analysis is based primarily on how the movies with higher share of foreign box office (i.e. with more emphasis/success in their global distribution channels) performed differently than those with lower share. She found that differences in performance between the two groups based on density distribution of profit, the elasticity of profit with respect to production budget, some possible effects of the average age of principle actors and actresses on worldwide gross box office and profit, and the difference in box office performance by genres.
 
+Allan's EDA was focused on the genres, movie gross, length, run time and gender of lead roles. Features focused on where the wordwide_gross, foreign gross, actor_ordering, actor_age, actress_age,actress_ordering, production_budget, splits of the genres feauture, and domestic_gross. Comparison was done in pairs that would provide insights on what type and parameters of the movie should be created. Insight garnered were:
+	- top grossing genres with different gender for lead roles and lead ages
+	- top grossing movies per genre in domestic, foreign and worlwide market
+	- Profits for different movie budget and runtimes
 
 ## Responsibilities:
 
 - Phoebe Wong was responsible for the data cleaning file and Chart X to X.
+- Allan Gayahan was responsible for partial EDA and Deliverables.
 
 
 ## Summary of Files:
 
--
+- Empowering_Mod1.ipynnb is the notebook for non-technical presentation
+- All .jpg files are for visualization purposes of EDA findings
+- Mod1ProjData.csv is the final data source for EDA
