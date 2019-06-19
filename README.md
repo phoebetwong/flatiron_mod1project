@@ -63,11 +63,7 @@ Movie features data (e.g. genres, principal cast and crew, and their demographic
 
 ### Data cleaning
 
-Since the datasets with box office and budget data include only titles as identifier, and the titles do not appear consistently across the data sources (e.g. "The Lego Movie" vs "The LEGO Movie"), special treatment is needed to prevent either duplicating data with an outer join, or losing a substantial amount of data from an inner join. When merging data sets that do not include a title ID, we used the Levenshtein score that identify two different sets of strings that are most likely to be the same. The procedure of merging dataset, was as follows: 1. performed an inner join with the movie title as key, which merged the records with identical movie title spelling; 2. created a list of the movie titles from each dataset, and subtracted them from each other to obtain the respective list of movie titles that did not get merged; 3. using the StringDist package in Python, we created a list of Levenstein scores for each combination of unmatched movie title, which was combined as a dataframe with the respective movie titles from each dataset using a for loop function; 4. the movies titles that do not represent the same movie were deleted from the dataframe; 5. this dataframe with movie titles from both datasets is used as a map to merge each dataset. With this procedure, we were able to match most of our budget data with a title ID in the IMDB datasets.
-
-After merging the budget data with the movie feature data, we also created multiple features not in the raw dataset for our analysis. By merging the dataset containing the casts' and crews' age with the principle cast and crew in each movie, we created features that could be correlated with box office demands such as the average age of principle actors and actresses in each movie when the movie was released, and the share of principle actresses in each movie.
-
-We identified some errors in the Box Office Mojo dataset (some foreign box office observations do not have the correct scale), so Box Office Mojo data is used only when TheMovieDB.org data is not available for a movie that is included in the IMDB database. From this combined budget dataset, we created the foreign gross box Office variable by subtracting domestic box office from the worldwide box office. We also created a Profit variable, which is the difference between Worldwide Box Office and Production Budget. To better understand the demand of global movie market, we created a dummy variable that sorts movies according to their foreign box office as a share of worldwide box office, with movies that share over 50% labeled as 'Global' and those 50% or under labeled as 'Domestic'. As sensitivity test, we also created a dummy variable according to the total number of regions the movie was distributed, with over 10 regions as 'Global', and 10 or below as 'Domestic'.
+We merged the datasets with some novel techniques and created multiple unique features for this analysis. For explanations on the methodology, see Mod1Proj_PW_AG.ipynb and for the code, see Mod1Proj_DataCleaning_FINAL_PW_AG.ipynb
 
 ### Exploratory data analysis
 
@@ -80,12 +76,28 @@ Allan's EDA was focused on the genres, movie gross, length, run time and gender 
 
 ## Responsibilities:
 
-- Phoebe Wong was responsible for the data cleaning file and Chart X to X.
-- Allan Gayahan was responsible for partial EDA and Deliverables.
+- Phoebe Wong was responsible for data cleaning and Figure 1 to Figure 5 in the Jupyter Notebook for nontechnical audience (Mod1Proj_PW_AG.ipynb).
+- Allan Gayahan was responsible for Figure 6 to 9 in the Jupyter Notebook for nontechnical audience.
 
 
 ## Summary of Files:
 
-- Empowering_Mod1.ipynnb is the notebook for non-technical presentation
-- All .jpg files are for visualization purposes of EDA findings
-- Mod1ProjData.csv is the final data source for EDA
+- Mod1Proj_PW_AG.ipynb is the notebook for non-technical presentation. Below are the files of the graphs appear in that notebook:
+1_Graph1DomFor1018.jpg                
+2_PBHist.jpg                            
+3_PBGScat.jpg                           
+4a_WGGENR.jpg                           
+4b_PGENR.jpg                            
+5a_ACTRAGE.jpg                          
+5b_ACTRAGE.jpg                         
+GenreGross.jpg                          
+LeadAge.jpg                             
+Movie-Theater-PowerPoint-Background.png
+MovieGross.jpg
+ProfitParameters.jpg  
+
+- Mod1Proj_DataCleaning_FINAL_PW_AG.ipynb is the notebook for technical audience, with all the codes that generated the graph and data cleaning, and comments on the process. 
+
+- Mod1ProjData.csv is the final merged dataset used for our analysis.
+
+- The reminder of the csv files are the unziped raw data files described in the Dataset section above.
